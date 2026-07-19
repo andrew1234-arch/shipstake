@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useAccount, usePublicClient, useWalletClient } from "wagmi";
-import { BACKEND_URL, SHIPSTAKE_ABI, SHIPSTAKE_ADDRESS, explorerTxUrl } from "@/lib/contract";
 import { monadTestnet } from "@/lib/wagmi";
+import { BACKEND_URL, SHIPSTAKE_ABI, SHIPSTAKE_ADDRESS, explorerTxUrl } from "@/lib/contract";
 import { friendlyWalletError } from "@/lib/errors";
 
 type Stake = {
@@ -127,6 +127,8 @@ export function StakeList({ refreshKey }: { refreshKey: number }) {
         functionName: "claimExpired",
         args: [BigInt(stakeId)],
         gas: gasLimit,
+        chain: monadTestnet,
+        account: address,
       });
       await publicClient.waitForTransactionReceipt({ hash });
       await load();

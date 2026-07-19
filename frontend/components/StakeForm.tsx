@@ -140,6 +140,8 @@ export function StakeForm({
         args: [deadlineUnix],
         value,
         gas: gasLimit,
+        chain: monadTestnet,
+        account: address,
       });
       setTxHash(hash);
 
@@ -343,7 +345,7 @@ export function StakeForm({
           rel="noopener noreferrer"
           className="mb-4 block break-all font-mono text-xs text-purple underline hover:text-purple/80"
         >
-          View transaction on Monad Explorer ↗
+          View transaction on Monad Explorer &#8599;
         </a>
       )}
 
